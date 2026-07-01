@@ -19,6 +19,17 @@ def init_db():
     )
     """)
 
+    cur.execute("""
+    CREATE TABLE IF NOT EXISTS price_ticks (
+        id INTEGER PRIMARY KEY AUTOINCREMENT,
+        market_slug TEXT,
+        token_id TEXT,
+        price REAL,
+        side TEXT,
+        ts TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+    )
+    """)
+
     conn.commit()
     conn.close()
 
